@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 19:06:57 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 19:59:34 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/06 20:25:40 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 static void			st_movement(t_wolf *w, float move_speed)
 {
-//	if(w->map->data[(int)(w->pov.pos.x + w->pov.dir.x * move_speed)][(int)(w->pov.pos.y)] == 0)
+	if (g_temp_map[(int)(w->pov.pos.x + w->pov.dir.x * move_speed)]
+			[(int)(w->pov.pos.y)] == 0)
 		w->pov.pos.x += w->pov.dir.x * move_speed;
-//	if(w->map->data[(int)(w->pov.pos.x)][(int)(w->pov.pos.y + w->pov.dir.y * move_speed)] == 0)
+	if (g_temp_map[(int)(w->pov.pos.x)]
+			[(int)(w->pov.pos.y + w->pov.dir.y * move_speed)] == 0)
 		w->pov.pos.y += w->pov.dir.y * move_speed;
 }
 
 int					key_handler(int key_id, t_wolf *w)
 {
-	printf("%d\n", key_id);
-
 	if (key_id == ESC_KEY)
 		sheep(0);
 	if (key_id == LEFT_KEY)
@@ -37,7 +37,6 @@ int					key_handler(int key_id, t_wolf *w)
 	draw_pass(w);
 	return (0);
 }
-
 
 static void			st_rotate_vector(t_vector *v, float angle)
 {
@@ -57,4 +56,3 @@ void				rotate_pov(t_pov *p, float angle)
 	st_rotate_vector(&p->dir, angle);
 	st_rotate_vector(&p->pln, angle);
 }
-

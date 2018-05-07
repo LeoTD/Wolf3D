@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:56 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 20:03:17 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/06 21:21:18 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 
 # define WIN_X 1024
 # define WIN_Y 768
+
+# define VIEW_DISTANCE 10
 
 # define RED 16711680
 # define GREEN 65280

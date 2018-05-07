@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 01:25:16 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 04:32:38 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/06 20:21:40 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void			map_init(t_wolf *w)
 {
-	// PARSE MAP --
 	w->map = malloc(sizeof(t_map));
 	w->map->data = (int **)g_temp_map;
 	w->map->height = 24;
