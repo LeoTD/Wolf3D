@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:06 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/07 08:08:18 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 08:21:20 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int				g_temp_map[24][24] =
 static void			st_win_init(t_wolf *w)
 {
 	WOLF_ERROR((w->mlx = mlx_init()), 1);
-	WOLF_ERROR((w->win = mlx_new_window(w->mlx, WIN_X, WIN_Y, "COL_VER")), 1);
+	WOLF_ERROR((w->win =
+				mlx_new_window(w->mlx, WIN_X, WIN_Y, "PRESS A TO PARTY")), 1);
 }
 
 void				st_wolf_init(t_wolf *w)
