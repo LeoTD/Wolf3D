@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 01:00:13 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/07 04:16:48 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 05:33:52 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void			pov_init(t_pov *pov)
 	pov->dir.y = 0.0f;
 	pov->pln.x = 0.0f;
 	pov->pln.y = 2.0f / 3.0f;
+	pov->up = 0;
+	pov->down = 0;
+	pov->left = 0;
+	pov->right = 0;
 }
 
 static void		st_calc_distance(t_pov *p, t_vars *v, t_ray *r)
@@ -72,27 +76,46 @@ static void		st_prep_vars(t_vars *v, t_wolf *w, t_ray *ray)
 	v->sid_dist.y = (ray->dir.y < 0 ? w->pov.pos.y - v->map_y :
 							v->map_y + 1.0 - w->pov.pos.y) * v->del_dist.y;
 }
-
-static int		st_color_fade(int color, int k, int mask)
+/*
+static int		st_color_fade(int color, float k, int mask)
 {
 	int			tmp;
 
+	k = 7 / (100 / k);
 	tmp = color & mask;
 	tmp -= ((COLOR_FALLOFF & mask) * k);
 	if (tmp < 0)
 		tmp = 0;
 	return (tmp);
-}
+}*/
 
-static int		st_view_fade(int color, float wall_dist)
+int				view_fade(int color, float wall_dist)
 {
-	float			tmp;
+//	float			tmp;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
 
-	tmp = 0;
-	tmp += st_color_fade(color, (int)(wall_dist - VIEW_DISTANCE), RED);
-	tmp += st_color_fade(color, (int)(wall_dist - VIEW_DISTANCE), GREEN);
-	tmp += st_color_fade(color, (int)(wall_dist - VIEW_DISTANCE), BLUE);
-	return (tmp);
+	r = color;
+	g = color >> 8;
+	b = color >> 16;
+//	tmp = 0;
+
+	wall_dist = 7 / (100 / wall_dist);
+	if (wall_dist > 0.9)
+		wall_dist = 0.9;
+	if (r > 0)
+		r = r - (r * wall_dist);
+	if (g > 0)
+		g = g - (g * wall_dist);
+	if (b > 0)
+		b = b - (b * wall_dist);
+	return ((r << 16) + (g << 8) + b);
+
+//	tmp += st_color_fade(color, (wall_dist - VIEW_DISTANCE), RED);
+//	tmp += st_color_fade(color, (wall_dist - VIEW_DISTANCE), GREEN);
+//	tmp += st_color_fade(color, (wall_dist - VIEW_DISTANCE), BLUE);
+//	return (tmp);
 }
 
 int				color_picker(t_ray *ray, t_vars *v)
@@ -102,16 +125,16 @@ int				color_picker(t_ray *ray, t_vars *v)
 	tmp = 0;
 	if (v->side == 1)
 		if (ray->dir.y < 0)
-			tmp = 0x012E57;
+			tmp = RED;//0x012E57;
 		else
-			tmp = 0x93b7c6;
+			tmp = GREEN;//0x93b7c6;
 	else
 		if (ray->dir.x < 0)
-			tmp = 0x001528;
+			tmp = BLUE;//0x001528;
 		else
-			tmp = 0x96128b;
-	if (v->wall_dist > VIEW_DISTANCE + 1)
-		tmp = st_view_fade(tmp, v->wall_dist);
+			tmp = ORANGE;//0x96128b;
+//	if (v->wall_dist > VIEW_DISTANCE + 1)
+		tmp = view_fade(tmp, v->wall_dist);
 	return (tmp);
 }
 

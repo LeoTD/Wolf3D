@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:56 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/07 04:16:03 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 06:38:15 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <time.h>
 
 # define WOLF_ERROR(x, y) if (!(x)) sheep(y)
 
@@ -38,6 +39,9 @@
 # define ORANGE 14380301
 # define YELLOW 16120877
 
+# define SKY_COLOR 0x89b6ff
+# define FLOOR_COLOR 0x2d251a
+
 # define ESC_KEY 53
 # define LEFT_KEY 123
 # define RIGHT_KEY 124
@@ -49,9 +53,13 @@
 # define D_KEY 2
 # define W_KEY 13
 
+# define KEY_PRESS_MASK (1L<<0)
+# define KEY_DOWN 2
+# define KEY_UP 3
+# define WINDOW_CLOSE 17
 
-# define TURN_SPEED 0.1f
-# define MOVE_SPEED 0.3f
+# define TURN_SPEED 0.03f
+# define MOVE_SPEED 0.05f
 
 typedef struct			s_vector
 {
@@ -64,6 +72,10 @@ typedef struct			s_pov
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	pln;
+	char		up;
+	char		down;
+	char		left;
+	char		right;
 }						t_pov;
 
 typedef struct			s_ray
@@ -105,6 +117,7 @@ typedef struct			s_img
 	int			endian;
 	int			width;
 	int			height;
+	char		rave;
 }						t_img;
 
 typedef struct			s_wolf
@@ -118,12 +131,16 @@ typedef struct			s_wolf
 
 }						t_wolf;
 
-void					sheep(int errid);
+int						sheep(int errid);
 void					draw_pixel(t_img *img, int x, int y, int color);
 void					draw_vert(t_img *img, int x, int y_start, int y_end);
 int						draw_pass(t_wolf *w);
+int						view_fade(int color, float wall_dist);
 
-int						key_handler(int key_id, t_wolf *w);
+int						key_up(int key_id, t_wolf *w);
+int						key_down(int key_id, t_wolf *w);
+int						loop_handler(t_wolf *w);
+void					movement(t_wolf *w, float move_speed);
 void					rotate_pov(t_pov *p, float angle);
 
 void					map_init(t_wolf *w);

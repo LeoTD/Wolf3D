@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 01:41:37 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 20:20:23 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 06:26:53 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ void				draw_pixel(t_img *img, int x, int y, int color)
 
 void				draw_vert(t_img *img, int x, int y_start, int y_end)
 {
-	while (++y_start < y_end)
-		draw_pixel(img, x, y_start, img->color);
+	int				i;
+	static int		lol = 0;
+
+	i = -1;
+	if (img->rave)
+		lol = lol - clock() / CLOCKS_PER_SEC;
+	while (++i < y_start)
+		draw_pixel(img, x, i, SKY_COLOR + lol);
+	while (++i < y_end)
+		draw_pixel(img, x, i, img->color + lol);
+	while (++i < WIN_Y)
+		draw_pixel(img, x, i, view_fade(FLOOR_COLOR, abs(i - WIN_Y) * 0.030) + lol);
 }
