@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:06 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 04:29:41 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/06 19:34:26 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,21 @@ int					main(void)
 	pov_init(&w->pov);
 	draw_pass(w);
 
+	mlx_key_hook(w->win, key_handler, w);
+
 	mlx_loop(w->mlx);
 }
 
 void				sheep(int errid)
 {
+	if (errid == 0)
+	{
+		ft_putstr("[ :D ]\n");
+		exit(0);
+	}
 	if (errid == 1)
 		ft_putstr("[ mlx error! ]\n");
-	else if (errid == 2)
+	if (errid == 2)
 		ft_putstr("[ Malloc error! ]\n");
 	exit(1);
 }

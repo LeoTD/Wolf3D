@@ -6,7 +6,7 @@
 #    By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/21 19:18:37 by ltanenba          #+#    #+#              #
-#    Updated: 2018/05/06 04:30:54 by ltanenba         ###   ########.fr        #
+#    Updated: 2018/05/06 19:15:22 by ltanenba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ WOLF_SRC	= wolf3d.c \
 			  drawing_functions.c \
 			  image_functions.c \
 			  map.c \
-			  raycasting.c
+			  raycasting.c \
+			  events.c
 
 SRC			= $(addprefix src/, $(WOLF_SRC))
 OBJ			= $(addprefix obj/, $(WOLF_SRC:.c=.o))

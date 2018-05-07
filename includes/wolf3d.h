@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:56 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 04:38:08 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/06 20:03:17 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@
 # define PINK 15024866
 # define ORANGE 14380301
 # define YELLOW 16120877
+
+# define ESC_KEY 53
+# define LEFT_KEY 123
+# define RIGHT_KEY 124
+# define UP_KEY 126
+# define DOWN_KEY 125
+
+# define TURN_SPEED 0.1f
+# define MOVE_SPEED 0.3f
 
 typedef struct			s_vector
 {
@@ -103,6 +112,9 @@ void					sheep(int errid);
 void					draw_pixel(t_img *img, int x, int y, int color);
 void					draw_vert(t_img *img, int x, int y_start, int y_end);
 void					draw_pass(t_wolf *w);
+
+int						key_handler(int key_id, t_wolf *w);
+void					rotate_pov(t_pov *p, float angle);
 
 void					map_init(t_wolf *w);
 void					pov_init(t_pov *pov);

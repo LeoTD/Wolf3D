@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 01:00:13 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 04:47:51 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/06 19:06:20 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void			pov_init(t_pov *pov)
 {
-	pov->pos.x = 22;
-	pov->pos.y = 12;
+	pov->pos.x = 7;
+	pov->pos.y = 7;
 	pov->dir.x = 1.0f;
 	pov->dir.y = 0.0f;
 	pov->pln.x = 0.0f;
