@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:56 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/07 02:48:26 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 04:16:03 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ typedef struct			s_wolf
 void					sheep(int errid);
 void					draw_pixel(t_img *img, int x, int y, int color);
 void					draw_vert(t_img *img, int x, int y_start, int y_end);
-void					draw_pass(t_wolf *w);
+int						draw_pass(t_wolf *w);
 
 int						key_handler(int key_id, t_wolf *w);
 void					rotate_pov(t_pov *p, float angle);

@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 01:00:13 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 22:54:44 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 04:16:48 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int				color_picker(t_ray *ray, t_vars *v)
 	return (tmp);
 }
 
-void			draw_pass(t_wolf *w)
+int				draw_pass(t_wolf *w)
 {
 	int			x;
 	t_ray		ray;
@@ -136,4 +136,5 @@ void			draw_pass(t_wolf *w)
 		draw_vert(w->img, x, ray.y_start, ray.y_end);
 	}
 	mlx_put_image_to_window(w->mlx, w->win, w->img->img, 0, 0);
+	return (0);
 }

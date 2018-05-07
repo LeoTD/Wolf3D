@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 19:06:57 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 23:15:32 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 04:11:46 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int					key_handler(int key_id, t_wolf *w)
 	if (key_id == W_KEY)
 		st_movement(w, MOVE_SPEED * 10);
 
-	draw_pass(w);
 	return (0);
 }
 

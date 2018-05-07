@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:06 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 20:27:00 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 04:12:31 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int					main(void)
 	pov_init(&w->pov);
 	draw_pass(w);
 	mlx_key_hook(w->win, key_handler, w);
+	mlx_loop_hook(w->mlx, draw_pass, w);
 	mlx_loop(w->mlx);
 }
 
