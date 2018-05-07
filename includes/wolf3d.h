@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:56 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/07 06:38:15 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 08:11:58 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <math.h>
 
-# include <stdio.h>
 # include <unistd.h>
 # include <time.h>
 
@@ -28,7 +27,6 @@
 # define WIN_Y 768
 
 # define VIEW_DISTANCE 10
-// define COLOR_FALLOFF 0x101010
 # define COLOR_FALLOFF 0x010707
 
 # define RED 0xff0000
@@ -135,6 +133,7 @@ int						sheep(int errid);
 void					draw_pixel(t_img *img, int x, int y, int color);
 void					draw_vert(t_img *img, int x, int y_start, int y_end);
 int						draw_pass(t_wolf *w);
+int						color_picker(t_ray *ray, t_vars *v);
 int						view_fade(int color, float wall_dist);
 
 int						key_up(int key_id, t_wolf *w);

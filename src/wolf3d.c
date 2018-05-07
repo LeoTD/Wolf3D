@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:06 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/07 06:38:05 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 08:08:18 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int					main(void)
 	mlx_hook(w->win, KEY_UP, KEY_PRESS_MASK, key_up, w);
 	mlx_hook(w->win, KEY_DOWN, KEY_PRESS_MASK, key_down, w);
 	mlx_hook(w->win, WINDOW_CLOSE, KEY_PRESS_MASK, sheep, 0);
-//	mlx_key_hook(w->win, key_handler, w);
 	mlx_loop_hook(w->mlx, loop_handler, w);
 	mlx_loop(w->mlx);
 }
