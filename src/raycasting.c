@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 01:00:13 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 21:26:41 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/06 22:54:44 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,28 @@ static void		st_prep_vars(t_vars *v, t_wolf *w, t_ray *ray)
 							v->map_y + 1.0 - w->pov.pos.y) * v->del_dist.y;
 }
 
+static int		st_color_fade(int color, int k, int mask)
+{
+	int			tmp;
+
+	tmp = color & mask;
+	tmp -= ((COLOR_FALLOFF & mask) * k);
+	if (tmp < 0)
+		tmp = 0;
+	return (tmp);
+}
+
+static int		st_view_fade(int color, float wall_dist)
+{
+	float			tmp;
+
+	tmp = 0;
+	tmp += st_color_fade(color, (int)(wall_dist - VIEW_DISTANCE), RED);
+	tmp += st_color_fade(color, (int)(wall_dist - VIEW_DISTANCE), GREEN);
+	tmp += st_color_fade(color, (int)(wall_dist - VIEW_DISTANCE), BLUE);
+	return (tmp);
+}
+
 int				color_picker(t_ray *ray, t_vars *v)
 {
 	int			tmp;
@@ -80,18 +102,16 @@ int				color_picker(t_ray *ray, t_vars *v)
 	tmp = 0;
 	if (v->side == 1)
 		if (ray->dir.y < 0)
-			tmp = PINK;
+			tmp = 0x012E57;
 		else
-			tmp = GREEN;
+			tmp = 0x93b7c6;
 	else
 		if (ray->dir.x < 0)
-			tmp = PURPLE;
+			tmp = 0x001528;
 		else
-			tmp = ORANGE;
+			tmp = 0x96128b;
 	if (v->wall_dist > VIEW_DISTANCE + 1)
-		tmp -= (v->wall_dist - VIEW_DISTANCE);
-	if (tmp < 0)
-		tmp = 0;
+		tmp = st_view_fade(tmp, v->wall_dist);
 	return (tmp);
 }
 

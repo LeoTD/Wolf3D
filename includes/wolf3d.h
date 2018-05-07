@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:52:56 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 21:21:18 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/07 02:48:26 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@
 # define WIN_Y 768
 
 # define VIEW_DISTANCE 10
+// define COLOR_FALLOFF 0x101010
+# define COLOR_FALLOFF 0x010707
 
-# define RED 16711680
-# define GREEN 65280
-# define BLUE 255
+# define RED 0xff0000
+# define GREEN 0xff00
+# define BLUE 0xff
 # define PURPLE 5387683
 # define PINK 15024866
 # define ORANGE 14380301
@@ -41,6 +43,12 @@
 # define RIGHT_KEY 124
 # define UP_KEY 126
 # define DOWN_KEY 125
+
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
+# define W_KEY 13
+
 
 # define TURN_SPEED 0.1f
 # define MOVE_SPEED 0.3f

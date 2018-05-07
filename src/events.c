@@ -6,7 +6,7 @@
 /*   By: ltanenba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 19:06:57 by ltanenba          #+#    #+#             */
-/*   Updated: 2018/05/06 20:25:40 by ltanenba         ###   ########.fr       */
+/*   Updated: 2018/05/06 23:15:32 by ltanenba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void			st_movement(t_wolf *w, float move_speed)
 
 int					key_handler(int key_id, t_wolf *w)
 {
+	printf("%d\n", key_id);
 	if (key_id == ESC_KEY)
 		sheep(0);
 	if (key_id == LEFT_KEY)
@@ -34,6 +35,16 @@ int					key_handler(int key_id, t_wolf *w)
 		st_movement(w, -MOVE_SPEED);
 	if (key_id == UP_KEY)
 		st_movement(w, MOVE_SPEED);
+
+	if (key_id == A_KEY)
+		rotate_pov(&w->pov, -(TURN_SPEED * 10));
+	if (key_id == D_KEY)
+		rotate_pov(&w->pov, TURN_SPEED * 10);
+	if (key_id == S_KEY)
+		st_movement(w, -(MOVE_SPEED * 10));
+	if (key_id == W_KEY)
+		st_movement(w, MOVE_SPEED * 10);
+
 	draw_pass(w);
 	return (0);
 }
